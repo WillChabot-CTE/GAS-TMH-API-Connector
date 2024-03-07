@@ -1,4 +1,17 @@
-function authorize() {
+/**
+ * Contains the functions for getting an authorization cookie from the TMH API.
+ * 
+ * @author Will Chabot - Center for Transportation and the Environment (www.cte.tv) <chabot@cte.tv>
+ */
+
+/**
+ * Obtains an authorization cookie for subsequent API calls.
+ *
+ * @param {string} TMH_LOGIN The login credential for authentication.
+ * @param {string} TMH_SECRET The password credential for authentication.
+ * @returns {string} The authorization cookie, either retrieved from the cache or acquired through a new login request using the provided credentials.
+ */
+function authorize(TMH_LOGIN, TMH_SECRET) {
 
     // Look in the cache for the Cookie we need
     let cachedCookie = CACHE_SERVICE.get('Cookie');
@@ -28,4 +41,4 @@ function authorize() {
     CACHE_SERVICE.put('Cookie', cookie, 1500); // cache for 25 minutes
   
     return cookie;
-  }
+}
